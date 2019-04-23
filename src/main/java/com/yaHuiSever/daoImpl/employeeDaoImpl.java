@@ -12,6 +12,7 @@ import com.yaHuiSever.dao.employeeDao;
 import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
+import com.yaHuiSever.domain.shop;
 import com.yaHuiSever.until.DBUtil;
 
 public class employeeDaoImpl implements employeeDao{
@@ -37,13 +38,13 @@ public class employeeDaoImpl implements employeeDao{
 		}
    //添加顾客
 	@Override
-	public boolean addCustumer(custumer c) {
+	public boolean addCustumer(int cid,String cname,String cpasswd,int melevel,int cfrezz,double money) {
 		//实例化dbutil对象
 				this.db=new DBUtil();
 				//创建sql语句
 				String sql="insert into customer values(?,?,?,?,?,?)";
 				try {
-					int i=this.db.update(sql, c.getCid(),c.getCname(),c.getCpasswd(),c.getMelevel(),c.getCfrezz(),c.getMoney());
+					int i=this.db.update(sql,cid,cname,cpasswd,melevel,cfrezz,money);
 					return i>0;
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -118,31 +119,42 @@ public class employeeDaoImpl implements employeeDao{
 	}
     //查看购物车q
 	@Override
-	public List<food> selectByEid() {
-//		//实例化dbutil对象
-//				this.db=new DBUtil();
-//				//创建sql语句
-//				String sql="select * from shop";
-//				try {
-//					ResultSet rs = this.db.query(sql);
-//					//创建一个list集合用于存储所有的课程
-//					List<custumer> list=new ArrayList<custumer>();
-//					while(rs.next()){
-//						list.add(new custumer(rs.getInt("cid"), rs.getInt("foodid"), rs.getString(arg0)));
-//					}
-//					return list;
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+	public List<shop> selectByEid() {
+		//实例化dbutil对象
+				this.db=new DBUtil();
+				//创建sql语句
+				String sql="select * from shop";
+				try {
+					ResultSet rs = this.db.query(sql);
+					//创建一个list集合用于存储所有的课程
+					List<shop> list=new ArrayList<shop>();
+					while(rs.next()){
+						list.add(new shop(rs.getInt("foodid"),rs.getNString("foodname"),rs.getDouble("foodprice"),rs.getInt("number")));
+					}
+					return list;
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		return null;
 	}
 	//销量增加
 	@Override
-	public String addsales() {
-		return null;
-		// TODO Auto-generated method stub
+	public boolean addsales(int foodid,int foodnum) {
 		
+		this.db=new DBUtil();
+		//创建sql语句
+		String sql="update food set foodnum=? where foodid=?";
+		try {
+			int i = this.db.update(sql,foodid,foodnum);
+			return i>0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	//客户查询

@@ -13,13 +13,13 @@ public interface managerDao {
     //2.创建一个添加普通员工的方法
 	public boolean addEmployee(employee e);
 	//3.创建一个删除普通员工的方法
-	public boolean deleteEmployee(employee e);
+	public boolean deleteEmployee(int eid);
 	//4.创建一个修改普通员工的方法
 	public boolean updeteEmployee(int eid,String ename,String epasswd);
 	//5.创建一个通过id查询普通员工的方法
 	public employee selectEmployeeByid(int eid);
 	//6.创建一个客户补卡的方法
-	public String addCard();
+	public boolean addCard(int cid,String cpasswd);
 	//7.创建一个客户冻结的方法
 	public boolean updateCustumer(int cid,int cfrezz);
 	//8.创建一个客户查询的方法通过id
@@ -36,8 +36,9 @@ public interface managerDao {
 	public boolean updateFood(int foodid,String foodname,double foodprice);
 	//14.创建一个删除菜品的方法
 	public boolean deleteFood(int foodid);
-	//15.创建一个设置特价菜品（修改菜名，单价）的方法
-    //	public boolean updateDiscFood();
+	//15.创建一个查询所有员工的方法
+	public List<employee> selectAllEmp();
+	
 	
 	
 }

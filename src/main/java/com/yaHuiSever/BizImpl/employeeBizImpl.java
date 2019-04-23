@@ -8,6 +8,7 @@ import com.yaHuiSever.daoImpl.employeeDaoImpl;
 import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
+import com.yaHuiSever.domain.shop;
 
 public class employeeBizImpl implements employeeBiz{
 	
@@ -26,9 +27,9 @@ public class employeeBizImpl implements employeeBiz{
 	}
 	//添加客户业务
 	@Override
-	public String increaseCustomer(custumer c) {
+	public String increaseCustomer(int cid,String cname,String cpasswd,int melevel,int cfrezz,double money) {
 		
-		return this.emp.addCustumer(c)?"添加成功！":"添加失败！";
+		return this.emp.addCustumer(cid, cname, cpasswd, melevel, cfrezz, money)?"添加成功！":"添加失败！";
 	}
 	//会员卡充值业务
 	@Override
@@ -56,15 +57,15 @@ public class employeeBizImpl implements employeeBiz{
 	}
 	//查看购物车业务,展示购物车
 	@Override
-	public List<food> findShops() {
+	public List<shop> findShops() {
 		
 		return this.emp.selectByEid();
 	}
 	//更改销量的业务
 	@Override
-	public String alterSales() {
+	public String alterSales(int foodid,int foodnum) {
 		
-		return this.emp.addsales();
+		return this.emp.addsales(foodid, foodnum)?"":"";
 	}
 	//客户查询业务
 	@Override

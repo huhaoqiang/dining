@@ -38,9 +38,9 @@ public class managerBizImpl implements managerBiz{
 	}
 //删除员工
 	@Override
-	public String removeEmployee(employee e) {
+	public String removeEmployee(int eid) {
 		
-		return this.mana.deleteEmployee(e)?"删除成功！":"删除失败！";
+		return this.mana.deleteEmployee(eid)?"删除成功！":"删除失败！";
 	}
 //通过id查询员工
 	@Override
@@ -50,9 +50,9 @@ public class managerBizImpl implements managerBiz{
 	}
 //客户补卡操作
 	@Override
-	public String alterCustumer() {
+	public String alterCustumer(int cid,String cpasswd) {
 		
-		return this.mana.addCard();
+		return this.mana.addCard(cid, cpasswd)?"补卡成功！":"补卡失败！";
 	}
 // 冻结客户
 	@Override
@@ -101,6 +101,12 @@ public class managerBizImpl implements managerBiz{
 	public List<food> findSales() {
 		
 		return null;
+	}
+	//查询所有员工
+	@Override
+	public List<employee> findAllEmp() {
+		
+		return this.mana.selectAllEmp();
 	}
 	
 

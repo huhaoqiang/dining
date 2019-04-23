@@ -51,13 +51,13 @@ public class managerDaoImpl implements managerDao{
 	}
 	//删除员工
 	@Override
-	public boolean deleteEmployee(employee e) {
+	public boolean deleteEmployee(int eid) {
 		//实例化dbutil对象
 		this.db=new DBUtil();
 		//创建sql语句
 		String sql="delete from employee where id=?";
 		try {
-			int i = this.db.update(sql,e.getEid() );
+			int i = this.db.update(sql,eid);
 			return i>0;
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -107,9 +107,23 @@ public class managerDaoImpl implements managerDao{
 	}
 	//客户补卡
 	@Override
-	public String addCard() {
-		return null;
-		// TODO Auto-generated method stub
+	public boolean addCard(int cid,String cpasswd) {
+		//实例化dbutil对象
+				this.db=new DBUtil();
+				//创建sql语句
+				String sql="delete from custumer where cid=? and cpasswd=?";
+				try {
+					int i = this.db.update(sql,cid,cpasswd);
+					return i>0;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
+		
+		
+		return false;
+		
 
 	}
 	//客户冻结
@@ -167,12 +181,7 @@ public class managerDaoImpl implements managerDao{
 		}
 		return false;
 	}
-//	//查看菜品销量
-//	@Override
-//	public List<food> selectSalesById() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 	//查看菜品 和销量
 	@Override
 	public List<food> selectAllFood() {
@@ -225,12 +234,7 @@ public class managerDaoImpl implements managerDao{
 		}
 		return false;
 	}
-	//   //修改特价菜
-	//	@Override
-	//	public boolean updateDiscFood() {
-	//		// TODO Auto-generated method stub
-	//		return false;
-	//	}
+
 	//添加菜品
 	@Override
 	public boolean addFood(food f) {
@@ -252,6 +256,28 @@ public class managerDaoImpl implements managerDao{
 	@Override
 	public List<food> selectsales() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	//查看所有员工
+	@Override
+	public List<employee> selectAllEmp() {
+		//实例化dbutil对象
+		this.db=new DBUtil();
+		//创建sql语句
+		String sql="select * from employee";
+		try {
+			ResultSet rs = this.db.query(sql);
+			List<employee> list=new ArrayList<employee>();
+			while(rs.next()){
+				list.add(new employee(rs.getInt("eid"),rs.getString("ename"),rs.getString("epasswd")));
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		return null;
 	}
 

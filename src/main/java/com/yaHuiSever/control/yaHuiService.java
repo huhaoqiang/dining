@@ -6,6 +6,7 @@ import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
 import com.yaHuiSever.domain.manager;
+import com.yaHuiSever.domain.shop;
 
 
 public interface yaHuiService {
@@ -13,7 +14,7 @@ public interface yaHuiService {
 	    //员工登录业务
 	   public employee logEm(int eid,String epasswd);
 		//添加客户业务
-		public String increaseCustomer(custumer c);
+		public String increaseCustomer(int cid,String cname,String cpasswd,int melevel,int cfrezz,double money);
 		//会员卡充值业务
 		public String upMoney(double money,int eid);
 		//会员卡挂失业务
@@ -23,9 +24,9 @@ public interface yaHuiService {
 		//删除购物车业务
 		public String delShop(int id);
 		//查看购物车业务,展示购物车
-		public List<food> findShop();
+		public List<shop> findShop();
 		//更改销量的业务
-		public String changeSales();
+		public String changeSales(int foodid,int foodnum);
 		//客户查询业务
 		public List<custumer> findAllCustomer();
 
@@ -38,11 +39,11 @@ public interface yaHuiService {
 		//修改普通员工业务
 		public String upEmployee(int eid,String ename,String epasswd);
 		//删除普通员工业务
-		public String delEmployee(employee e);
+		public String delEmployee(int eid);
 		//查询普通员工业务(通过id)
 		public employee findEmp( int eid);
 		//客户补卡业务         还没写
-		public String upCustumerByM();
+		public String upCustumerByM(int cid,String cpasswd);
 		//冻结客户业务(修改客户状态)      
 		public String frezzCustumerByM(int cid,int cfrezz);
 		//查询客户业务
@@ -61,5 +62,7 @@ public interface yaHuiService {
 //		public String upDisc(food f);
 		//查看菜品销量业务
 		public List<food> findSalesByM();
+		//查询所有员工
+		public List<employee> findAllEm();
 
 }

@@ -16,11 +16,11 @@ public interface managerBiz {
 	//修改普通员工业务
 	public String alterEmployee(int eid,String ename,String epasswd);
 	//删除普通员工业务
-	public String removeEmployee(employee e);
+	public String removeEmployee(int eid);
 	//查询普通员工业务(通过id)
 	public employee findEmployeeByid(int eid);
 	//客户补卡业务
-	public String alterCustumer();
+	public String alterCustumer(int cid,String cpasswd);
 	//冻结客户业务
 	public String frezzCustumer(int cid,int cfrezz);
 	//查询客户业务
@@ -35,9 +35,9 @@ public interface managerBiz {
 	public String alterFood(int foodid,String foodname,double foodprice);
 	//查询菜品业务
 	public List<food> findFood();
-//	//设置特价菜业务
-//	public String alterDisc();
 	//查看菜品销量业务
 	public List<food> findSales();
+	//查询所有员工
+	public List<employee> findAllEmp();
 	
 }

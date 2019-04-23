@@ -7,6 +7,8 @@ public class food {
 	private int foodnum;
 	private int typeid;
 	private  String typename;
+	private int number;
+	
 	public food() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -19,6 +21,13 @@ public class food {
 		this.foodnum = foodnum;
 		this.typeid = typeid;
 		this.typename = typename;
+		this.number=number;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
 	}
 	public int getFoodid() {
 		return foodid;
