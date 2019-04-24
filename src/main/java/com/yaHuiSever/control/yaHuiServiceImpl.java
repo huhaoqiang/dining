@@ -9,7 +9,9 @@ import com.yaHuiSever.BizImpl.managerBizImpl;
 import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
+import com.yaHuiSever.domain.gretype;
 import com.yaHuiSever.domain.manager;
+import com.yaHuiSever.domain.member;
 import com.yaHuiSever.domain.shop;
 
 public class yaHuiServiceImpl implements yaHuiService{
@@ -163,6 +165,18 @@ public class yaHuiServiceImpl implements yaHuiService{
 	public List<employee> findAllEm() {
 
 		return this.mabiz.findAllEmp();
+	}
+	//查看菜类
+	@Override
+	public List<gretype> findAllGre() {
+		
+		return this.mabiz.findAllType();
+	}
+	//查看会员类型
+	@Override
+	public List<member> findAllMe() {
+	
+		return this.mabiz.findAllMember();
 	}
 
 

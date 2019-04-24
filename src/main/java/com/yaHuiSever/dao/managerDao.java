@@ -5,7 +5,9 @@ import java.util.List;
 import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
+import com.yaHuiSever.domain.gretype;
 import com.yaHuiSever.domain.manager;
+import com.yaHuiSever.domain.member;
 
 public interface managerDao {
 	//1.创建一个经理登陆的方法
@@ -38,7 +40,10 @@ public interface managerDao {
 	public boolean deleteFood(int foodid);
 	//15.创建一个查询所有员工的方法
 	public List<employee> selectAllEmp();
-	
+	//16.创建一个查看菜类表的方法
+	public List<gretype> selectAllType();
+	//17.创建一个查看会员表的方法
+	public List<member> selectAllMember();
 	
 	
 }

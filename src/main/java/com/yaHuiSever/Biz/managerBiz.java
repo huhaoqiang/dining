@@ -5,7 +5,9 @@ import java.util.List;
 import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
+import com.yaHuiSever.domain.gretype;
 import com.yaHuiSever.domain.manager;
+import com.yaHuiSever.domain.member;
 
 public interface managerBiz {
 	
@@ -39,5 +41,9 @@ public interface managerBiz {
 	public List<food> findSales();
 	//查询所有员工
 	public List<employee> findAllEmp();
+	//查看菜类表的方法
+	public List<gretype> findAllType();
+	//查看会员表
+	public List<member> findAllMember();
 	
 }

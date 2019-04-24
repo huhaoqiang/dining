@@ -39,7 +39,7 @@ public class employee implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "employee [eid=" + eid + ", ename=" + ename + ", epasswed=" + epasswd + "]";
+		return "\t" + eid + "\t" + ename + "\t" + epasswd + "\t";
 	}
 	
 }

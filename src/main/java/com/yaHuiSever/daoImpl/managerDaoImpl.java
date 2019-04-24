@@ -8,7 +8,9 @@ import com.yaHuiSever.dao.managerDao;
 import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
+import com.yaHuiSever.domain.gretype;
 import com.yaHuiSever.domain.manager;
+import com.yaHuiSever.domain.member;
 import com.yaHuiSever.until.DBUtil;
 
 public class managerDaoImpl implements managerDao{
@@ -83,7 +85,7 @@ public class managerDaoImpl implements managerDao{
 
 		return false;
 	}
-	//通过id查询员工
+	//通过id查询员工  可用
 	@Override
 	public employee selectEmployeeByid(int eid) {
 		//实例化dbutil对象
@@ -139,7 +141,7 @@ public class managerDaoImpl implements managerDao{
 		}
 		return false;
 	}
-	//客户查询
+	//客户查询  已测试
 	@Override
 	public custumer selectCustumerById(int cid) {
 		//实例化dbutil对象
@@ -182,7 +184,7 @@ public class managerDaoImpl implements managerDao{
 		return false;
 	}
 
-	//查看菜品 和销量
+	//查看菜品 和销量   已测试
 	@Override
 	public List<food> selectAllFood() {
 		this.db=new DBUtil();
@@ -258,7 +260,7 @@ public class managerDaoImpl implements managerDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	//查看所有员工
+	//查看所有员工 可用
 	@Override
 	public List<employee> selectAllEmp() {
 		//实例化dbutil对象
@@ -278,6 +280,47 @@ public class managerDaoImpl implements managerDao{
 		}
 		
 		
+		return null;
+	}
+	
+	//查看菜类表
+	@Override
+	public List<gretype> selectAllType() {
+		//实例化dbutil对象
+		this.db=new DBUtil();
+		//创建sql语句
+		String sql="select * from gretype";
+		try {
+			ResultSet rs = this.db.query(sql);
+			List<gretype> list=new ArrayList<gretype>();
+			while(rs.next()){
+				list.add(new gretype(rs.getInt("typeid"),rs.getString("typename")));
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	//查看会员表
+	@Override
+	public List<member> selectAllMember() {
+		//实例化dbutil对象
+				this.db=new DBUtil();
+				//创建sql语句
+				String sql="select * from member";
+				try {
+					ResultSet rs = this.db.query(sql);
+					List<member> list=new ArrayList<member>();
+					while(rs.next()){
+						list.add(new member(rs.getInt("melevel"),rs.getString("mename"),rs.getDouble("medisc")));
+					}
+					return list;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		return null;
 	}
 

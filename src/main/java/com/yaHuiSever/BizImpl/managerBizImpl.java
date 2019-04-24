@@ -8,7 +8,9 @@ import com.yaHuiSever.daoImpl.managerDaoImpl;
 import com.yaHuiSever.domain.custumer;
 import com.yaHuiSever.domain.employee;
 import com.yaHuiSever.domain.food;
+import com.yaHuiSever.domain.gretype;
 import com.yaHuiSever.domain.manager;
+import com.yaHuiSever.domain.member;
 
 public class managerBizImpl implements managerBiz{
 	
@@ -107,6 +109,18 @@ public class managerBizImpl implements managerBiz{
 	public List<employee> findAllEmp() {
 		
 		return this.mana.selectAllEmp();
+	}
+	//查看菜类表的方法
+	@Override
+	public List<gretype> findAllType() {
+	
+		return this.mana.selectAllType();
+	}
+	//查看会员表
+	@Override
+	public List<member> findAllMember() {
+	
+		return this.mana.selectAllMember();
 	}
 	
 

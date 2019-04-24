@@ -67,6 +67,11 @@ public class food implements Serializable{
 	public void setTypename(String typename) {
 		this.typename = typename;
 	}
+	@Override
+	public String toString() {
+		return "\t"+ foodid + " \t" + foodname + "\t\t" + foodprice + "\t" + foodnum
+				+ "\t" + typeid + "\t";
+	}
 	
 	
 

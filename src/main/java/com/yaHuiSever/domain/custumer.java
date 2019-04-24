@@ -74,6 +74,11 @@ public class custumer implements Serializable{
 	public void setMedisc(double medisc) {
 		this.medisc = medisc;
 	}
+	@Override
+	public String toString() {
+		return "\t" + cid + "\t" + cname + "\t" + cpasswd + "\t" + cfrezz + "\t"
+				+ money + "\t" + melevel + "\t";
+	}
 	
 	
 

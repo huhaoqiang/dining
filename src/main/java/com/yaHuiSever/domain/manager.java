@@ -34,6 +34,10 @@ public class manager implements Serializable {
 	public void setMpasswd(String mpasswd) {
 		this.mpasswd = mpasswd;
 	}
+	@Override
+	public String toString() {
+		return "\t" + mid + "\t" + mname + "\t" + mpasswd + "\t";
+	}
 	
 
 }

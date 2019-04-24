@@ -27,13 +27,18 @@ public class employeeDaoImpl implements employeeDao{
 		String sql="select * from employee where eid=? and epasswd=?";
 		try {
 			ResultSet rs = this.db.query(sql,eid,epasswd);
-			while(rs.next()){
+			if(rs.next()){
 				return	new employee(rs.getInt("eid"), rs.getString("ename"),rs.getString("epasswd"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
+		
+		
+		
 		return null;
 	}
 	//添加顾客   已测试，可用
@@ -49,6 +54,8 @@ public class employeeDaoImpl implements employeeDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 		return false;
 	}
@@ -65,6 +72,8 @@ public class employeeDaoImpl implements employeeDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 		return false;
 	}
@@ -81,6 +90,8 @@ public class employeeDaoImpl implements employeeDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 		return false;
 	}
@@ -97,6 +108,8 @@ public class employeeDaoImpl implements employeeDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 
 		return false;
@@ -114,10 +127,12 @@ public class employeeDaoImpl implements employeeDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 		return false;
 	}
-	//查看购物车q
+	//查看购物车q  已测试
 	@Override
 	public List<shop> selectByEid() {
 		//实例化dbutil对象
@@ -129,17 +144,19 @@ public class employeeDaoImpl implements employeeDao{
 			//创建一个list集合用于存储所有的课程
 			List<shop> list=new ArrayList<shop>();
 			while(rs.next()){
-				list.add(new shop(rs.getInt("foodid"),rs.getNString("foodname"),rs.getDouble("foodprice"),rs.getInt("number")));
+				list.add(new shop(rs.getInt("foodid"),rs.getNString("foodname"),rs.getDouble("foodprice"),rs.getInt("foodnum")));
 			}
 			return list;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 		return null;
 	}
-	//销量增加
+	//销量增加  可操作
 	@Override
 	public boolean addsales(int foodid,int foodnum) {
 
@@ -147,17 +164,19 @@ public class employeeDaoImpl implements employeeDao{
 		//创建sql语句
 		String sql="update food set foodnum=? where foodid=?";
 		try {
-			int i = this.db.update(sql,foodid,foodnum);
+			int i = this.db.update(sql,foodnum,foodid);
 			return i>0;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 
 		return false;
 	}
 
-	//客户查询
+	//客户查询  已测试
 	@Override
 	public List<custumer> selectcustomer() {
 		this.db=new DBUtil();
@@ -173,6 +192,8 @@ public class employeeDaoImpl implements employeeDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.db.closed();
 		}
 		return null;
 
